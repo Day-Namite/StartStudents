@@ -1,3 +1,7 @@
-import { Routes } from '@angular/router';
 
-export const routes: Routes = [];
+import type { Routes } from '@angular/router';
+import { TelaDeLoginComponent } from './componets/tela-de-login/tela-de-login';
+
+export const routes: Routes = [ 
+ { path: 'Login', component: TelaDeLoginComponent},
+];

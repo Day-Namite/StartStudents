@@ -1,0 +1,35 @@
+
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-tela-de-login',
+  templateUrl: './tela-de-login.html',
+  styleUrls: ['./tela-de-login.scss']
+})
+export class TelaDeLoginComponent {
+  username: string = '';
+  password: string = '';
+  usuarioValido: boolean = false;
+  senhaValida: boolean = false;
+
+  validarCampo(valor: string): boolean {
+    if (valor.length < 8) return false;
+    const temLetra = /[a-zA-Z]/.test(valor);
+    const temNumero = /[0-9]/.test(valor);
+    return temLetra && temNumero;
+  }
+
+  verificarCampos(): void {
+    this.usuarioValido = this.validarCampo(this.username);
+    this.senhaValida = this.validarCampo(this.password);
+  }
+
+  onSubmit(event: Event): void {
+    event.preventDefault();
+    if (this.usuarioValido && this.senhaValida) {
+      alert('Login enviado com sucesso!');
+      console.log('Usuário:', this.username);
+      console.log('Senha:', this.password);
+    }
+  }
+}
