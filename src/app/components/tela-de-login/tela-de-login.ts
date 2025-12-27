@@ -1,8 +1,11 @@
 
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tela-de-login',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './tela-de-login.html',
   styleUrls: ['./tela-de-login.scss']
 })
