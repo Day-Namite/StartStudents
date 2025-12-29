@@ -1,11 +1,12 @@
-
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router'; 
 
 @Component({
   selector: 'app-tela-de-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './tela-de-login.html',
   styleUrls: ['./tela-de-login.scss']
 })
@@ -14,6 +15,8 @@ export class TelaDeLoginComponent {
   password: string = '';
   usuarioValido: boolean = false;
   senhaValida: boolean = false;
+
+  constructor(private router: Router) {}
 
   validarCampo(valor: string): boolean {
     if (valor.length < 8) return false;
@@ -33,6 +36,8 @@ export class TelaDeLoginComponent {
       alert('Login enviado com sucesso!');
       console.log('Usuário:', this.username);
       console.log('Senha:', this.password);
+
+      this.router.navigate(['/alunos']);
     }
   }
 }

@@ -1,42 +1,37 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Start Students - Login</title>
-    <!-- Link para o arquivo CSS -->
-    <link rel="stylesheet" href="tela-de-login.scss">
-</head>
-<body>
-    <!-- CARD DE LOGIN -->
-    <div class="login-box">
-        <h1>Start Students</h1>
-        <p class="subtitle">Faça seu login para continuar</p>
 
-        <!-- FORMULÁRIO -->
-        <form id="loginForm">
-            <!-- CAMPO USUÁRIO -->
-            <label>Usuário</label>
-            <div class="input-group">
-                <img src="img/user.svg" class="icon" alt="ícone de usuário">
-                <input type="text" id="username" placeholder="usuario123">
-            </div>
-            <span class="error" id="usernameError">Mínimo 8 caracteres com letras e números</span>
+<div class="login-box">
+  <h1>Start Students</h1>
+  <p class="subtitle">Faça seu login para continuar</p>
 
-            <!-- CAMPO SENHA -->
-            <label>Senha</label>
-            <div class="input-group">
-                <img src="img/block.svg" class="icon" alt="ícone de bloqueio">
-                <input type="password" id="password" placeholder="••••••••">
-            </div>
-            <span class="error" id="passwordError">Mínimo 8 caracteres com letras e números</span>
-
-            <!-- BOTÃO ACESSAR -->
-            <button type="submit" id="btnAcessar" disabled>Acessar</button>
-        </form>
+  <form (ngSubmit)="onSubmit($event)">
+    <label>Usuário</label>
+    <div class="input-group">
+      <img src="/assets/img/user.svg" class="icon" alt="ícone de usuário">
+      <input
+        type="text"
+        [(ngModel)]="username"
+        (blur)="verificarCampos()"
+        name="username"
+        placeholder="usuario123">
     </div>
+    <span class="error" [class.show]="!usuarioValido && username.length > 0">
+      Mínimo 8 caracteres com letras e números
+    </span>
 
-    <!-- Link para o arquivo TypeScript compilado -->
-    <script src="tela-de-login.js"></script>
-</body>
-</html>
+    <label>Senha</label>
+    <div class="input-group">
+      <img src="/assets/img/block.svg" class="icon" alt="ícone de bloqueio">
+      <input
+        type="password"
+        [(ngModel)]="password"
+        (blur)="verificarCampos()"
+        name="password"
+        placeholder="••••••••">
+    </div>
+    <span class="error" [class.show]="!senhaValida && password.length > 0">
+      Mínimo 8 caracteres com letras e números
+    </span>
+
+    <button type="submit" [disabled]="!usuarioValido || !senhaValida">Acessar</button>
+  </form>
+</div>
