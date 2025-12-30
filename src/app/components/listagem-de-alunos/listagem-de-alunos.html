@@ -1,0 +1,97 @@
+
+<section class="alunos">
+  <h2>Alunos</h2>
+
+  <!-- Busca -->
+  <div class="toolbar">
+    <input
+      type="text"
+      [value]="termoBusca"
+      (input)="buscarAluno($event)"
+      placeholder="Buscar por nome, matrícula ou status…" />
+    <button type="button" (click)="novoAluno()">Novo aluno</button>
+  </div>
+
+  <!-- Lista -->
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th>Matrícula</th>
+        <th>Nome</th>
+        <th>Status</th>
+        <th style="width: 220px;">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aluno of getAlunosPaginados()">
+        <td>{{ aluno.matricula }}</td>
+        <td>{{ aluno.nome }}</td>
+        <td>
+          <span
+            class="badge"
+            [class.ativo]="aluno.status === 'Ativo'"
+            [class.inativo]="aluno.status === 'Inativo'">
+            {{ aluno.status }}
+          </span>
+          <button type="button" class="link" (click)="toggleStatus(aluno)">
+            Alternar
+          </button>
+        </td>
+ 
+<td data-label="Ações">
+  <div class="acoes">
+    <!-- Ver detalhes -->
+    <button
+      type="button"
+      class="btn-ver"
+      aria-label="Ver detalhes"
+      title="Ver detalhes"
+      (click)="verDetalhes(aluno)"
+    >
+      <img src="assets/icons/olho.svg" alt="" /> 
+    </button>
+
+    <!-- Editar -->
+    <button
+      type="button"
+      class="btn-editar"
+      aria-label="Editar aluno"
+      title="Editar"
+      (click)="editarAluno(aluno)"
+    >
+      <img src="assets/icons/lapis.svg" alt="" /> 
+    </button>
+
+    <!-- Excluir -->
+    <button
+      type="button"
+      class="btn-excluir"
+      aria-label="Excluir aluno"
+      title="Excluir"
+      (click)="excluirAluno(aluno)"
+    >
+      <img src="assets/icons/lixo.svg" alt="" />
+    </button>
+  </div>
+</td>
+      
+      </tr>
+      <tr *ngIf="getAlunosPaginados().length === 0">
+        <td colspan="4" class="empty">Nenhum aluno encontrado.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Paginação -->
+  <nav class="paginacao" *ngIf="totalPaginas > 1">
+    <button type="button" (click)="irParaPagina(paginaAtual - 1)" [disabled]="paginaAtual === 1">«</button>
+    <button
+      type="button"
+      *ngFor="let p of getPaginas()"
+      (click)="irParaPagina(p)"
+      [class.active]="p === paginaAtual">
+      {{ p }}
+    </button>
+    <button type="button" (click)="irParaPagina(paginaAtual + 1)" [disabled]="paginaAtual === totalPaginas">»</button>
+  </nav>
+</section>
