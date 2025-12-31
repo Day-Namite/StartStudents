@@ -33,7 +33,6 @@ export class TelaDeLoginComponent {
   onSubmit(event: Event): void {
     event.preventDefault();
     if (this.usuarioValido && this.senhaValida) {
-      alert('Login enviado com sucesso!');
       console.log('Usuário:', this.username);
       console.log('Senha:', this.password);
 

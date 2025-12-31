@@ -1,15 +1,17 @@
 
 <section class="alunos">
-  <h2>Alunos</h2>
+  <div class="header">
+    <h2>Alunos</h2>
+    <button type="button" (click)="novoAluno()">Novo Aluno</button>
+  </div>
 
-  <!-- Busca -->
+  <!-- Barra de busca -->
   <div class="toolbar">
     <input
       type="text"
       [value]="termoBusca"
       (input)="buscarAluno($event)"
       placeholder="Buscar por nome, matrícula ou status…" />
-    <button type="button" (click)="novoAluno()">Novo aluno</button>
   </div>
 
   <!-- Lista -->

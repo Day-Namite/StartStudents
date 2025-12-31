@@ -1,7 +1,7 @@
 
 import type { Routes } from '@angular/router';
 import { TelaDeLoginComponent } from './components/tela-de-login/tela-de-login';
-import { AlunosComponent } from './alunos/alunos.component';
+import { AlunosComponent } from './components/listagem-de-alunos/listagem-de-alunos';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },

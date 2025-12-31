@@ -1,18 +1,16 @@
+
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  background-color: #f5f5f5;
-  padding: 40px 20px;
-}
-
+/* Container principal */
 .container {
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
 
   h1 {
     font-size: 36px;
@@ -22,14 +20,14 @@ body {
   }
 }
 
-// Seção de Alunos
+/* Card da listagem de alunos */
 .alunos {
   background-color: #fff;
-  border-radius: 4px;
-  padding: 3px;
+  border-radius: 8px;
+  padding: 32px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  // Header com título e botão
+  /* Cabeçalho com título e botão */
   .header {
     display: flex;
     justify-content: space-between;
@@ -45,11 +43,11 @@ body {
     button {
       background-color: #e53e3e;
       color: #fff;
-      padding: 10px 24px;
+      padding: 12px 24px;
       border: none;
       border-radius: 6px;
-      font-size: 14px;
-      font-weight: 500;
+      font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
       transition: all 0.2s ease;
 
@@ -58,15 +56,11 @@ body {
         transform: translateY(-1px);
         box-shadow: 0 4px 8px rgba(229, 62, 62, 0.3);
       }
-
-      &:active {
-        transform: translateY(0);
-      }
     }
   }
 }
 
-// Toolbar (busca)
+/* Barra de busca */
 .toolbar {
   margin-bottom: 24px;
 
@@ -95,117 +89,139 @@ body {
   }
 }
 
-// Tabela
+/* Badge de status */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-right: 8px;
+
+  &.ativo {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+
+  &.inativo {
+    background-color: #fee2e2;
+    color: #991b1b;
+  }
+}
+
+/* Link alternar status */
+.link {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+
+  &:hover {
+    color: #2563eb;
+  }
+}
+
+/* Tabela */
 .tabela {
   width: 100%;
   border-collapse: collapse;
   background-color: #fff;
 
-  thead {
-    th {
-      padding: 16px;
-      text-align: left;
-      font-size: 14px;
-      font-weight: 600;
-      color: #000;
-      border-bottom: 1px solid #e0e0e0;
-      background-color: #fff;
+  thead th {
+    padding: 16px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    border-bottom: 2px solid #e0e0e0;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid #e0e0e0;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #fafafa;
+    }
+
+    &:last-child {
+      border-bottom: none;
     }
   }
 
-  tbody {
-    tr {
-      border-bottom: 1px solid #e0e0e0;
-      transition: background-color 0.2s ease;
+  tbody td {
+    padding: 20px 16px;
+    font-size: 14px;
+    color: #000;
+    vertical-align: middle;
+  }
+}
 
-      &:hover {
-        background-color: #fafafa;
-      }
+/* Área de ações */
+.acoes {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 
-      &:last-child {
-        border-bottom: none;
-      }
+  button {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    padding: 0;
+
+    img {
+      width: 18px;
+      height: 18px;
+      display: block;
+      filter: brightness(0) invert(1); /* transforma preto em branco */
     }
 
-    td {
-      padding: 20px 16px;
-      font-size: 14px;
-      color: #000;
-      vertical-align: middle;
+    &:active {
+      transform: scale(0.96);
+    }
+  }
 
-      &.empty {
-        text-align: center;
-        color: #999;
-        padding: 40px;
-        font-style: italic;
-      }
+  .btn-ver {
+    background-color: #6b7280;
+    color: #fff;
 
-      // Coluna de ações
-      .acoes {
-        display: flex;
-        gap: 8px;
-        align-items: center;
+    &:hover {
+      background-color: #4b5563;
+      transform: scale(1.06);
+    }
+  }
 
-        button {
-          width: 36px;
-          height: 36px;
-          border: none;
-          border-radius: 50%;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          transition: all 0.2s ease;
-          padding: 0;
-        
-          svg, img {
-            width: 18px;
-            height: 18px;
-          }
+  .btn-editar {
+    background-color: #3b82f6;
+    color: #fff;
 
-          // Botão de visualizar (cinza)
-          &.btn-ver {
-            background-color: #6b7280;
-            color: #fff;
+    &:hover {
+      background-color: #2563eb;
+      transform: scale(1.06);
+    }
+  }
 
-            &:hover {
-              background-color: #4b5563;
-              transform: scale(1.1);
-            }
-          }
+  .btn-excluir {
+    background-color: #ef4444;
+    color: #fff;
 
-          // Botão de editar (azul)
-          &.btn-editar {
-            background-color: #3b82f6;
-            color: #fff;
-
-            &:hover {
-              background-color: #2563eb;
-              transform: scale(1.1);
-            }
-          }
-
-          // Botão de excluir (vermelho)
-          &.btn-excluir {
-            background-color: #ef4444;
-            color: #fff;
-
-            &:hover {
-              background-color: #dc2626;
-              transform: scale(1.1);
-            }
-          }
-
-          &:active {
-            transform: scale(0.95);
-          }
-        }
-      }
+    &:hover {
+      background-color: #dc2626;
+      transform: scale(1.06);
     }
   }
 }
 
-// Paginação
+/* Paginação */
 .paginacao {
   display: flex;
   justify-content: center;
@@ -217,16 +233,13 @@ body {
     background-color: #fff;
     border: 1px solid #e0e0e0;
     color: #000;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     border-radius: 6px;
     font-size: 14px;
     font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     &:hover:not(:disabled):not(.active) {
       background-color: #fafafa;
@@ -243,92 +256,6 @@ body {
       background-color: #fff;
       color: #ccc;
       cursor: not-allowed;
-      border-color: #e0e0e0;
-    }
-  }
-}
-
-// Responsividade
-@media (max-width: 768px) {
-  .container {
-    padding: 20px 16px;
-
-    h1 {
-      font-size: 28px;
-      margin-bottom: 40px;
-    }
-  }
-
-  .alunos {
-    padding: 20px;
-
-    .header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 16px;
-
-      button {
-        width: 100%;
-      }
-    }
-  }
-
-  .toolbar input[type="text"] {
-    font-size: 16px;
-  }
-
-  .tabela {
-    display: block;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-
-    thead, tbody, tr, th, td {
-      display: block;
-    }
-
-    thead {
-      display: none;
-    }
-
-    tbody tr {
-      margin-bottom: 16px;
-      border: 1px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 16px;
-
-      &:hover {
-        background-color: #fff;
-      }
-    }
-
-    td {
-      padding: 8px 0;
-      border-bottom: none;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      &::before {
-        content: attr(data-label);
-        font-weight: 600;
-        color: #000;
-        flex-shrink: 0;
-        margin-right: 12px;
-      }
-
-      .acoes {
-        justify-content: flex-end;
-      }
-    }
-  }
-
-  .paginacao {
-    flex-wrap: wrap;
-
-    button {
-      width: 36px;
-      height: 36px;
-      font-size: 13px;
     }
   }
 }

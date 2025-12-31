@@ -1,8 +1,16 @@
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 .login-box {
@@ -12,7 +20,7 @@
   width: 100%;
   max-width: 450px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  margin: 0 auto;
+  margin: 20px;
 }
 
 h1 {
@@ -34,34 +42,45 @@ label {
   font-weight: 600;
   margin-bottom: 8px;
   margin-top: 20px;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
 }
 
 .input-group {
   position: relative;
-}
+ 
+  .icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+    z-index: 1;
+  }
 
-input {
-  width: 100%;
-  padding: 15px 15px 15px 45px;
-  border: 2px solid #e2e8f0;
-  border-radius: 10px;
-  font-size: 16px;
-  background: #f7fafc;
-}
+  input {
+    width: 100%;
+    padding: 15px 15px 15px 50px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 16px;
+    background: #f7fafc;
+    transition: all 0.2s ease;
 
-input:focus {
-  outline: none;
-  border-color: #667eea;
-  background: white;
-}
+    &:focus {
+      outline: none;
+      border-color: #667eea;
+      background: white;
+    }
 
-.icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
+    &::placeholder {
+      color: #a0aec0;
+    }
+  }
 }
 
 button {
@@ -76,15 +95,15 @@ button {
   cursor: pointer;
   margin-top: 30px;
   transition: background 0.2s ease;
-}
 
-button:hover {
-  background: #c53030;
-}
+  &:hover {
+    background: #c53030;
+  }
 
-button:disabled {
-  background: #cbd5e0;
-  cursor: not-allowed;
+  &:disabled {
+    background: #cbd5e0;
+    cursor: not-allowed;
+  }
 }
 
 .error {
@@ -92,8 +111,8 @@ button:disabled {
   font-size: 12px;
   margin-top: 5px;
   display: none;
-}
 
-.error.show {
-  display: block;
+  &.show {
+    display: block;
+  }
 }
