@@ -35,11 +35,9 @@
             [class.inativo]="aluno.status === 'Inativo'">
             {{ aluno.status }}
           </span>
-          <button type="button" class="link" (click)="toggleStatus(aluno)">
-            Alternar
-          </button>
+
         </td>
- 
+
 <td data-label="Ações">
   <div class="acoes">
     <!-- Ver detalhes -->
@@ -50,7 +48,7 @@
       title="Ver detalhes"
       (click)="verDetalhes(aluno)"
     >
-      <img src="assets/icons/olho.svg" alt="" /> 
+      <img src="assets/icons/olho.svg" alt="" />
     </button>
 
     <!-- Editar -->
@@ -61,7 +59,7 @@
       title="Editar"
       (click)="editarAluno(aluno)"
     >
-      <img src="assets/icons/lapis.svg" alt="" /> 
+      <img src="assets/icons/lapis.svg" alt="" />
     </button>
 
     <!-- Excluir -->
@@ -76,7 +74,7 @@
     </button>
   </div>
 </td>
-      
+
       </tr>
       <tr *ngIf="getAlunosPaginados().length === 0">
         <td colspan="4" class="empty">Nenhum aluno encontrado.</td>
