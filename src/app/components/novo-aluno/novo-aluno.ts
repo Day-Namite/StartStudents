@@ -79,9 +79,6 @@ export class NovoAlunoComponent {
 
       console.log('Novo aluno:', novoAluno);
 
-      // Aqui você faria a chamada para o serviço/API
-      // this.alunoService.cadastrar(novoAluno).subscribe(...)
-
       this.router.navigate(['/alunos']);
     } else {
       this.marcarCamposComoTocados();
