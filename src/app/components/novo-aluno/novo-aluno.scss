@@ -1,3 +1,4 @@
+
 .container-novo-aluno {
   max-width: 100%;
   width: 100%;
@@ -9,9 +10,9 @@
   .header {
     display: flex;
     align-items: center;
-    gap: 16px;
+    gap: 12px; // Aproxima ícone e título
     margin-bottom: 32px;
-    padding-bottom: 16px;
+    padding-bottom: 12px;
     border-bottom: 1px solid #e0e0e0;
 
     .btn-voltar {
@@ -37,19 +38,22 @@
 
     h1 {
       margin: 0;
-      font-size: 24px;
-      font-weight: 500;
-      color: #333;
+      font-size: 20px;
+      font-weight: 600;
+      color: #222;
+      line-height: 1; // Alinhamento com a seta
     }
   }
 
+  // Formulário
   .form-aluno {
-    max-width: 600px;
+    max-width: 820px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 28px;
 
+    // Foto
     .campo-foto {
       display: flex;
       flex-direction: column;
@@ -58,7 +62,7 @@
       label {
         font-size: 14px;
         font-weight: 500;
-        color: #666;
+        color: #575757;
       }
 
       .foto-container {
@@ -92,7 +96,7 @@
           cursor: pointer;
           transition: all 0.2s;
           font-size: 14px;
-          color: #666;
+          color: #555;
 
           &:hover {
             background: #eeeeee;
@@ -101,11 +105,13 @@
 
           .material-icons {
             font-size: 20px;
+            color: #444; // ícone mais visível
           }
         }
       }
     }
 
+    // Campos
     .campo-form {
       display: flex;
       flex-direction: column;
@@ -113,17 +119,17 @@
 
       label {
         font-size: 14px;
-        font-weight: 500;
-        color: #666;
+        font-weight: 600; // reforça contraste do rótulo
+        color: #4a4a4a;
       }
 
       .input-wrapper {
         display: flex;
         align-items: center;
         gap: 12px;
-        padding: 12px 16px;
-        border: 1px solid #e0e0e0;
-        border-radius: 6px;
+        padding: 14px 18px;
+        border: 1px solid #d6d6d6; // borda um pouco mais forte
+        border-radius: 8px; // arredondamento
         background: #fff;
         transition: all 0.2s;
 
@@ -134,18 +140,19 @@
 
         .material-icons {
           font-size: 20px;
-          color: #999;
+          color: #444;
         }
 
         input {
           flex: 1;
           border: none;
           outline: none;
-          font-size: 14px;
-          color: #333;
+          font-size: 15px;
+          color: #222;
+          font-weight: 500;
 
           &::placeholder {
-            color: #aaa;
+            color: #8a8a8a; // placeholder menos claro
           }
 
           &.input-error {
@@ -165,18 +172,19 @@
       }
     }
 
+    // Ações
     .acoes {
       display: flex;
       gap: 16px;
-      margin-top: 16px;
+      margin-top: 8px;
 
       button {
         flex: 1;
         padding: 14px 24px;
         border: none;
-        border-radius: 6px;
+        border-radius: 8px;
         font-size: 16px;
-        font-weight: 500;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.2s;
 
@@ -188,7 +196,7 @@
 
       .btn-cancelar {
         background: #f5f5f5;
-        color: #666;
+        color: #444;
         border: 1px solid #e0e0e0;
 
         &:hover:not(:disabled) {
@@ -206,17 +214,17 @@
       }
     }
   }
-}
-
-@media (max-width: 768px) {
-  .container-novo-aluno {
+  @media (max-width: 768px) {
     padding: 16px;
 
     .header h1 {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .form-aluno {
+      max-width: 100%;
+      gap: 20px;
+
       .campo-foto .foto-container {
         flex-direction: column;
         align-items: flex-start;

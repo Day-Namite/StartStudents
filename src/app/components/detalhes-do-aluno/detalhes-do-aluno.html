@@ -1,0 +1,83 @@
+<div class="app-container" *ngIf="aluno">
+  <div class="student-card">
+    <!-- CABEÇALHO -->
+    <header class="card-header">
+      <button class="botao-voltar-topo" (click)="voltarParaLista()" aria-label="Voltar">
+        <img src="assets/icons/voltar.svg" alt="Voltar">
+      </button>
+      <h1 class="page-title">Detalhes do Aluno</h1>
+    </header>
+
+    <!-- FOTO -->
+    <div class="photo-container">
+      <div class="photo-wrapper">
+        <img
+          [src]="aluno?.urlFoto || 'assets/icons/ines_perfil.jpg'"
+          class="photo-image"
+          [alt]="'Foto de ' + (aluno?.nome || 'Aluno')"
+        />
+      </div>
+    </div>
+
+    <!-- FORMULÁRIO -->
+    <form class="student-form">
+      <div class="form-group">
+        <label class="form-label">Nome Completo</label>
+        <div class="input-wrapper">
+          <img src="assets/icons/user.svg" alt="" class="input-icon">
+          <input class="form-input" [value]="aluno.nome" disabled>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">CPF</label>
+        <div class="input-wrapper">
+          <img src="assets/icons/cpf.svg" alt="" class="input-icon">
+          <input class="form-input" [value]="aluno.cpf" disabled>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <div class="input-wrapper">
+          <img src="assets/icons/email.svg" alt="" class="input-icon">
+          <input class="form-input" [value]="aluno.email" disabled>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Telefone</label>
+        <div class="input-wrapper">
+          <img src="assets/icons/phone.svg" alt="" class="input-icon">
+          <input class="form-input" [value]="aluno.telefone" disabled>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Matrícula</label>
+        <div class="input-wrapper">
+          <img src="assets/icons/hashtag.svg" alt="" class="input-icon">
+          <input class="form-input" [value]="aluno.matricula" disabled>
+        </div>
+      </div>
+
+      <!-- STATUS -->
+      <div class="form-group">
+        <label class="form-label">Status</label>
+        <div class="status-container">
+          <span class="status-indicator"
+                [class.status-active]="aluno.status === 'Ativo'"
+                [class.status-inactive]="aluno.status === 'Inativo'"></span>
+          <span class="status-text">{{ aluno.status }}</span>
+        </div>
+      </div>
+    </form>
+
+    <!-- BOTÃO -->
+    <button class="btn-voltar" (click)="voltarParaLista()">Voltar</button>
+  </div>
+</div>
+
+<div *ngIf="!aluno" class="loading">
+  <p>Carregando dados do aluno...</p>
+</div>

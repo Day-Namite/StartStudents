@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-import { Router } from '@angular/router'; // Adicione isso
+import { Router } from '@angular/router';
 
 interface Aluno {
   matricula: string;
@@ -75,7 +75,9 @@ export class AlunosComponent {
   }
 
   verDetalhes(aluno: Aluno) {
-    alert(`Matrícula: ${aluno.matricula}\nNome: ${aluno.nome}\nStatus: ${aluno.status}`);
+    console.log('Navegando para:', aluno.matricula);
+    console.log('URL será:', '/detalhes-aluno/' +aluno.matricula);
+    this.router.navigate(['/detalhes-aluno', aluno.matricula]);
   }
 
   editarAluno(aluno: Aluno) {
@@ -96,7 +98,7 @@ export class AlunosComponent {
     }
   }
 
-  // Método atualizado para redirecionar
+  // Método para redirecionar
   novoAluno() {
     this.router.navigate(['/novo-aluno']);
   }

@@ -1,3 +1,4 @@
+<!-- novo-aluno.html -->
 <div class="container-novo-aluno">
   <div class="header">
     <button class="btn-voltar" (click)="cancelar()">
@@ -5,7 +6,6 @@
     </button>
     <h1>Novo Aluno</h1>
   </div>
-
   <form [formGroup]="alunoForm" class="form-aluno">
     <!-- Foto do Aluno -->
     <div class="campo-foto">
@@ -13,24 +13,28 @@
       <div class="foto-container">
         <div class="foto-preview">
           <img
-            [src]="fotoSelecionada || 'assets/default-avatar.png'"
+            *ngIf="fotoSelecionada"
+            [src]="fotoSelecionada"
             alt="Foto selecionada"
             class="foto-img"
           />
+          <div *ngIf="!fotoSelecionada" class="foto-placeholder-novo">
+            Sem foto
+          </div>
         </div>
         <label class="btn-escolher-foto">
           <i class="material-icons">photo_camera</i>
           Escolher Foto
           <input
             type="file"
-            accept="image/*"
+            accept=".jpg,.jpeg,image/jpeg"
             (change)="onEscolherFoto($event)"
             hidden
           />
         </label>
+        <div class="erro" *ngIf="erroFoto">{{ erroFoto }}</div>
       </div>
     </div>
-
     <!-- Nome Completo -->
     <div class="campo-form">
       <label for="nomeCompleto">Nome Completo</label>
@@ -48,7 +52,6 @@
         Nome completo é obrigatório (mínimo 3 caracteres)
       </span>
     </div>
-
     <!-- Email -->
     <div class="campo-form">
       <label for="email">Email</label>
@@ -66,7 +69,6 @@
         Digite um email válido
       </span>
     </div>
-
     <!-- CPF -->
     <div class="campo-form">
       <label for="cpf">CPF</label>
@@ -86,7 +88,6 @@
         CPF inválido
       </span>
     </div>
-
     <!-- Telefone -->
     <div class="campo-form">
       <label for="telefone">Telefone</label>
@@ -106,16 +107,9 @@
         Telefone inválido
       </span>
     </div>
-
     <!-- Botões -->
     <div class="acoes">
-      <button
-        type="button"
-        class="btn-cancelar"
-        (click)="cancelar()"
-      >
-        Cancelar
-      </button>
+      <button type="button" class="btn-cancelar" (click)="cancelar()">Cancelar</button>
       <button
         type="submit"
         class="btn-cadastrar"
