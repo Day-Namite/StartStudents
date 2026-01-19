@@ -124,6 +124,7 @@ export class NovoAlunoComponent {
       this.alunoForm.get(campo)?.markAsTouched();
     });
   }
+
   get nomeCompleto() { return this.alunoForm.get('nomeCompleto'); }
   get email() { return this.alunoForm.get('email'); }
   get cpf() { return this.alunoForm.get('cpf'); }
